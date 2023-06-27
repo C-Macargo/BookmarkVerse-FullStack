@@ -1,7 +1,7 @@
 import express, { Express } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import appRouter from './router/app-router';
+import appRouter from './router/appRouter';
 import { connectDb, disconnectDB } from './config/database';
 
 dotenv.config();
