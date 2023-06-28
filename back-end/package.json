@@ -5,7 +5,7 @@
   "main": "src/app.ts",
   "scripts": {
     "build": "ttsc",
-    "start": "npm run prisma:migrate:deploy && node dist/src/server.js",
+    "start": "npm run prisma:migrate:deploy && node dist/server.js",
     "prisma:migrate:dev": "prisma migrate dev",
     "prisma:migrate:deploy": "prisma migrate deploy",
     "dev": "tsx watch src/server.ts",
