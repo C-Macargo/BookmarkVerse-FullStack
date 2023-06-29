@@ -3,8 +3,14 @@ import { Request, Response } from 'express';
 import { ApplicationError } from '@/util/errorProtocol';
 
 export function errorHandler(err: ApplicationError | Error, _req: Request, res: Response) {
-  if (err.name === 'ConflictError' || err.name === 'DuplicatedEmailError') {
+  if (err.name === 'ConflictError' || err.name === 'duplicatedEmailError') {
     return res.status(httpStatus.CONFLICT).send({
+      message: err.message,
+    });
+  }
+
+  if (err.name === 'invalidCredentialsError') {
+    return res.status(httpStatus.UNAUTHORIZED).send({
       message: err.message,
     });
   }

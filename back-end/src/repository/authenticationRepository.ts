@@ -34,8 +34,31 @@ async function createUser(email: string, password: string, name: string, image_u
   return user;
 }
 
+async function upsertSessionToken(userId: number, newToken: string): Promise<void> {
+  await prisma.session.upsert({
+    where: { user_id: userId },
+    create: {
+      user_id: userId,
+      token: newToken,
+    },
+    update: { token: newToken },
+  });
+}
+
+async function findSessionByUserId(id: number) {
+  const session = await prisma.session.findUnique({
+    where: {
+      user_id: id,
+    },
+  });
+
+  return session;
+}
+
 export const authRepository = {
   findUserByEmail,
   createUser,
   findUserData,
+  findSessionByUserId,
+  upsertSessionToken,
 };
