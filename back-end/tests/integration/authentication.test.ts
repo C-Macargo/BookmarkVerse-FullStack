@@ -74,7 +74,6 @@ describe('LOGIN /auth/login', () => {
       };
       await createLogin(loginBody);
       const response = await api.post('/auth/login').send(loginBody);
-      console.log(response.body)
       expect(response.status).toBe(httpStatus.OK);
       expect(response.body).toEqual(
         expect.objectContaining({
