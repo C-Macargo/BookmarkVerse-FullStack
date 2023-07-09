@@ -1,8 +1,10 @@
+import Header from "./components/headerComponents/Header"
+
 function App() {
 
   return (
     <>
-      <p>First Commit</p>
+    <Header/>
     </>
   )
 }
