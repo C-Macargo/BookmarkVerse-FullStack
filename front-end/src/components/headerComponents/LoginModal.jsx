@@ -1,18 +1,24 @@
 import { useState } from "react";
+import useLogin from "../../hooks/useLogin";
 
 function LoginModal({ isVisible, onClose }){
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const { login } = useLogin();
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		setEmail("");
 		setPassword("");
 		onClose(false);
+		login({ email, password });
 	};
 
 	if (!isVisible) {
 		return null;
 	}
+
+
 
 	return (
 		<div className="fixed inset-0 flex items-center justify-center z-50">
