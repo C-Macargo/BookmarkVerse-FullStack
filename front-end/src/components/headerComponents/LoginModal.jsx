@@ -35,6 +35,7 @@ function LoginModal({ isVisible, onClose }){
 						placeholder="Email"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
+						required
 					/>
 
 					<input
@@ -42,7 +43,9 @@ function LoginModal({ isVisible, onClose }){
 						className="w-full p-2 mb-3 border border-gray-300 rounded text-black"
 						placeholder="Password"
 						value={password}
+						minLength={6}
 						onChange={(e) => setPassword(e.target.value)}
+						required
 					/>
 
 					<button
