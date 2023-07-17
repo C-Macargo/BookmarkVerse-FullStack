@@ -15,6 +15,12 @@ export function errorHandler(err: ApplicationError | Error, _req: Request, res: 
     });
   }
 
+  if (err.name === 'InvalidSearchError') {
+    return res.status(httpStatus.NOT_FOUND).send({
+      message: err.message,
+    });
+  }
+
   console.error(err);
   res.status(httpStatus.INTERNAL_SERVER_ERROR).send({
     error: 'InternalServerError',

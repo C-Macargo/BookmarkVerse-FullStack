@@ -17,3 +17,23 @@ export interface LoginResponse {
   };
   token: string;
 }
+
+export interface apiBook {
+  id: string;
+  volumeInfo: VolumeInfo;
+}
+
+interface VolumeInfo {
+  title: string;
+  subtitle: string;
+  authors: string[];
+  publishedDate?: string;
+  description?: string;
+  language?: string;
+  imageLinks?: ImageLinks;
+}
+
+interface ImageLinks {
+  smallThumbnail: string;
+  thumbnail: string;
+}
