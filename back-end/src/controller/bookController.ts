@@ -14,3 +14,14 @@ export async function findBooks(req: Request, res: Response) {
     errorHandler(error, req, res);
   }
 }
+
+export async function findSpecificBook(req: Request, res: Response) {
+  const googleBooksId: string = req.params.googleBooksId;
+  try {
+    const book = await bookService.findSpecificBook(googleBooksId);
+    return res.status(httpStatus.OK).send(book);
+  } catch (err: unknown) {
+    const error = err as ApplicationError | Error;
+    errorHandler(error, req, res);
+  }
+}

@@ -1,3 +1,4 @@
+import { bookNotFoundError } from '@/error/bookNotFoundError';
 import { invalidSearchError } from '@/error/invalidSearchError';
 import { bookRepository } from '@/repository/bookRepository';
 import searchBooks from '@/util/googleApiRequest';
@@ -20,6 +21,13 @@ async function findBooks(title: string) {
   }
 }
 
+async function findSpecificBook(googleBooksId: string) {
+  const book = await bookRepository.findSpecificBook(googleBooksId);
+  if (!book) throw bookNotFoundError();
+  return book;
+}
+
 export const bookService = {
   findBooks,
+  findSpecificBook,
 };
