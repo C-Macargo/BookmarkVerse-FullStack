@@ -25,3 +25,13 @@ export async function findSpecificBook(req: Request, res: Response) {
     errorHandler(error, req, res);
   }
 }
+
+export async function findPopularBooks(req: Request, res: Response) {
+  try {
+    const books = await bookService.findPopularBooks();
+    return res.status(httpStatus.OK).send(books);
+  } catch (err: unknown) {
+    const error = err as ApplicationError | Error;
+    errorHandler(error, req, res);
+  }
+}

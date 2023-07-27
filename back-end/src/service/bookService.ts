@@ -16,7 +16,6 @@ async function findBooks(title: string) {
     }
     return books;
   } catch (error) {
-    console.error(`Error occurred while fetching books: ${error}`);
     throw invalidSearchError();
   }
 }
@@ -27,7 +26,14 @@ async function findSpecificBook(googleBooksId: string) {
   return book;
 }
 
+async function findPopularBooks() {
+  const books = await bookRepository.getPopularBooks();
+  if (!books) throw bookNotFoundError();
+  return books;
+}
+
 export const bookService = {
   findBooks,
   findSpecificBook,
+  findPopularBooks,
 };

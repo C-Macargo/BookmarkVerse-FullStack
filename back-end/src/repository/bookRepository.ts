@@ -43,8 +43,23 @@ async function findSpecificBook(googleBooksId: string): Promise<Book | null> {
   return book;
 }
 
+async function getPopularBooks() {
+  const popularBooks = await prisma.$queryRaw`
+      SELECT "Book".title, "Book".thumbnail, "Book".id, "Book".google_books_id,
+      CAST(COUNT("Bookmark".id) AS INTEGER) as bookmark_count
+      FROM "Book"
+      LEFT JOIN "Bookmark" ON "Book".id = "Bookmark".book_id
+      GROUP BY "Book".id, "Book".title, "Book".thumbnail
+      ORDER BY bookmark_count DESC
+      LIMIT 8;
+  `;
+
+  return popularBooks;
+}
+
 export const bookRepository = {
   insertBooks,
   getExistingBookIds,
   findSpecificBook,
+  getPopularBooks,
 };
