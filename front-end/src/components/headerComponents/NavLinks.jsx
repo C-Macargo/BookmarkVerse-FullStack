@@ -2,30 +2,39 @@ import { useState } from "react";
 import LoginModal from "./LoginModal";
 import { useUser } from "../contexts/userContext";
 import UserDropDownMenu from "./UserDropDown";
+import RegisterModal from "./RegisterModal";
 
 function NavLink() {
-	const [modalVisible, setModalVisible] = useState(false);
+	const [loginModalVisible, setLoginModalVisible] = useState(false);
+	const [registerModalVisible, setRegisterModalVisible] = useState(false);	
 	const { userData } = useUser();
 	return (
 		<ul className="flex space-x-4">
-            {(userData && userData.length !== 0) ? (
+			{userData && userData.length !== 0 ? (
 				<>
-                    <Link text="Home" href="/" />
+					<Link text="Home" href="/" />
 					<Link text="Bookmarks" href="/" />
 					<UserDropDownMenu />
 				</>
 			) : (
 				<>
-                    <Link text="Home" href="/" />
+					<Link text="Home" href="/" />
 					<ButtonLink
 						text="Login"
-						onClick={() => setModalVisible(true)}
+						onClick={() => setLoginModalVisible(true)}
 					/>
 					<LoginModal
-						isVisible={modalVisible}
-						onClose={() => setModalVisible(false)}
+						isVisible={loginModalVisible}
+						onClose={() => setLoginModalVisible(false)}
 					/>
-					<Link text="Register" href="/" />
+					<ButtonLink
+						text="Register"
+						onClick={() => setRegisterModalVisible(true)}
+					/>
+					<RegisterModal
+						isVisible={registerModalVisible}
+						onClose={() => setRegisterModalVisible(false)}
+					/>
 				</>
 			)}
 		</ul>
