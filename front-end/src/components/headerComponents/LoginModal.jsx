@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useLogin from "../../hooks/useLogin";
 
-function LoginModal({ isVisible, onClose }){
+function LoginModal({ isVisible, onClose }) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const { login } = useLogin();
@@ -10,23 +10,17 @@ function LoginModal({ isVisible, onClose }){
 		event.preventDefault();
 		setEmail("");
 		setPassword("");
-		onClose(false);
 		login({ email, password });
-	};
+		onClose(false);
+		};
 
 	if (!isVisible) {
 		return null;
 	}
 
-
-
 	return (
 		<div className="fixed inset-0 flex items-center justify-center z-50">
 			<div className=" bg-gray-700 p-5 rounded shadow-lg w-1/3 text-white">
-				<button className="float-right border-2 pl-1 pr-1" onClick={onClose}>
-					X
-				</button>
-
 				<h1 className="text-xl font-bold mb-4">Login</h1>
 				<form onSubmit={handleSubmit}>
 					<input
@@ -47,16 +41,23 @@ function LoginModal({ isVisible, onClose }){
 						onChange={(e) => setPassword(e.target.value)}
 						required
 					/>
-
+					<div className="flex">
 					<button
-						className="w-full p-2 bg-purple-600 text-white rounded"
-						type="submit">
-						Login
-					</button>
+    type="button"
+    className="w-full p-2 m-2 bg-black text-white rounded "
+    onClick={onClose}>
+    Cancel
+</button>
+						<button
+							className="w-full  p-2 m-2 bg-purple-700 text-white rounded"
+							type="submit">
+							Login
+						</button>
+					</div>
 				</form>
 			</div>
 		</div>
 	);
 }
 
-export default LoginModal
+export default LoginModal;
