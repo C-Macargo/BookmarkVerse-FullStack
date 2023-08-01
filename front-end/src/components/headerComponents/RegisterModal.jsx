@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useRegister from "../../hooks/useRegister";
+import { showToast } from "../Toast";
 
 function RegisterModal({ isVisible, onClose }) {
 	const [email, setEmail] = useState("");
@@ -14,7 +15,7 @@ function RegisterModal({ isVisible, onClose }) {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		if (!isMatch) {
-			alert("Passwords do not match!");
+			showToast('error', `Passwords do not match!`);
 			return;
 		}
 		setName("");

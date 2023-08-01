@@ -12,7 +12,7 @@ export function CustomToastContainer() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="light"
+        theme="dark"
       />
     );
   }

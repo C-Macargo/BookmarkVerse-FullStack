@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useUser } from "../components/contexts/userContext";
+import { showToast } from "../components/Toast";
 
 function useLogin() {
 	const [data, setData] = useState([]);
@@ -25,8 +26,9 @@ function useLogin() {
 				console.log(response);
 				setData(response.data);
 				setUserData(response.data);
+				showToast('sucess', 'Login Successful!');
 			} catch (error) {
-				console.log(error.response.data.message);
+				showToast('error', `${error.response.data.message}`);
 				setError(error.response.data.message);
 			} finally {
 				setIsLoading(false);

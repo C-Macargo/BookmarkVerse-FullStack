@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { showToast } from "../components/Toast";
 
 function useRegister() {
 	const [data, setData] = useState([]);
@@ -22,8 +23,9 @@ function useRegister() {
 				);
 				console.log(response);
 				setData(response.data);
+				showToast('sucess', 'Register Successful!');
 			} catch (error) {
-				console.log(error.response.data.message);
+				showToast('error', `${error.response.data.message}`);
 				setError(error.response.data.message);
 			} finally {
 				setIsLoading(false);
