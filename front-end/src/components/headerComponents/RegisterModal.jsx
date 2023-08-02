@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import useRegister from "../../hooks/useRegister";
-import { showToast } from "../Toast";
+import showToast from "../Toast";
 
 function RegisterModal({ isVisible, onClose }) {
 	const [email, setEmail] = useState("");

@@ -12,7 +12,7 @@ function LoginModal({ isVisible, onClose }) {
 		setPassword("");
 		login({ email, password });
 		onClose(false);
-		};
+	};
 
 	if (!isVisible) {
 		return null;
@@ -42,12 +42,12 @@ function LoginModal({ isVisible, onClose }) {
 						required
 					/>
 					<div className="flex">
-					<button
-    type="button"
-    className="w-full p-2 m-2 bg-black text-white rounded "
-    onClick={onClose}>
-    Cancel
-</button>
+						<button
+							type="button"
+							className="w-full p-2 m-2 bg-black text-white rounded "
+							onClick={onClose}>
+							Cancel
+						</button>
 						<button
 							className="w-full  p-2 m-2 bg-purple-700 text-white rounded"
 							type="submit">

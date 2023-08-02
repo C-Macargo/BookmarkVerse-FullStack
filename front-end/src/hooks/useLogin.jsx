@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useUser } from "../components/contexts/userContext";
-import { showToast } from "../components/Toast";
+import showToast from "../components/Toast";
 
 function useLogin() {
 	const [data, setData] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(null);
 	const [credentials, setCredentials] = useState(null);
-
 	const { setUserData } = useUser();
 
 	useEffect(() => {

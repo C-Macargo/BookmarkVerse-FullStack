@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { useUser } from "../contexts/userContext";
+import showToast from "../Toast";
 
 function UserDropDownMenu() {
 	const [isOpen, setIsOpen] = useState(false);
 	const { userData, setUserData } = useUser();
+
     function logout(){
         setUserData(null);
+		showToast('sucess', 'Logout Successful');
+
     }
 
 	return (
