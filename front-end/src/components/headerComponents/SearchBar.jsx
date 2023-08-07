@@ -10,7 +10,7 @@ function SearchBar() {
 	async function handleSubmit(event) {
 	event.preventDefault();
 	setSearchQuery('')
-	navigate(`/book/${searchQuery}`)
+	navigate(`/search/${searchQuery}`)
 	}
 
 	return (

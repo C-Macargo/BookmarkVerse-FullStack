@@ -17,7 +17,7 @@ function App() {
     <Header/>
           <Routes>
             <Route path="/" element={<div>Hello Home!</div>} />
-            <Route path="/book/:title" element={<SearchPage/>} />
+            <Route path="/search/:title" element={<SearchPage/>} />
           </Routes>
       </Background>
     </Router>
