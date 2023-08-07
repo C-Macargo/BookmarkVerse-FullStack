@@ -1,9 +1,16 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+
 
 function SearchBar() {
+	const navigate = useNavigate()
 	const [searchQuery, setSearchQuery] = useState("");
 
-	async function handleSubmit() {
+	async function handleSubmit(event) {
+	event.preventDefault();
+	setSearchQuery('')
+	navigate(`/book/${searchQuery}`)
 	}
 
 	return (
