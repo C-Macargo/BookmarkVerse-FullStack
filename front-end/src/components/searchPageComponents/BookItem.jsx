@@ -21,7 +21,7 @@ function BookItem({ books }) {
 			) : (
 				<NoImage/>
 			)}
-			<div className="flex flex-col text-white">
+			<div className="flex flex-col text-white py-2">
                 <Title title={books.volumeInfo?.title} />
                 <Authors author = {books.volumeInfo?.authors}/>
 			</div>
@@ -40,8 +40,8 @@ function NoImage() {
 
 function Title({ title }) {
     return(
-        <h3 className="truncate">
-            <span className="font-bold">Title:</span>{" "}
+        <h3>
+            <span className="font-bold text-xl">Title:</span>{" "}
             {title}
         </h3>
     );
@@ -49,8 +49,8 @@ function Title({ title }) {
 
 function Authors({ author }) {
     return(
-        <p className="truncate ">
-        <span className="font-bold">Author:</span>{" "}
+        <p className="truncate">
+        <span className="font-bold text-xl">Author:</span>{" "}
         {author}
     </p>
     );
